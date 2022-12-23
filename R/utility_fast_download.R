@@ -32,8 +32,8 @@ fast.download = function(urls, params, names, g, date.names, dataset, fun = 'r',
   stopifnot(identical(length(urls), NROW(params)))
 
   `%dopar%` <- foreach::`%dopar%`
-  no_cores  <- parallel::detectCores() - 1
-  doParallel::registerDoParallel(no_cores)
+  #no_cores  <- parallel::detectCores() - 1
+  doParallel::registerDoSEQ( )
 
   if(g$type == 'point'){
     var = foreach::foreach(i = 1:length(urls), .combine = 'c') %dopar% { 
