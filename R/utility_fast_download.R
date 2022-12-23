@@ -33,7 +33,7 @@ fast.download = function(urls, params, names, g, date.names, dataset, fun = 'r',
 
   `%dopar%` <- foreach::`%dopar%`
   #no_cores  <- parallel::detectCores() - 1
-  doParallel::registerDoSEQ( )
+  doSNOW::registerDoSEQ( )
 
   if(g$type == 'point'){
     var = foreach::foreach(i = 1:length(urls), .combine = 'c') %dopar% { 
